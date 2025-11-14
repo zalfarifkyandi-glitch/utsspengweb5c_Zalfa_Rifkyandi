@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Bird by zalfa - Toko Burung Terpercaya</title>
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐦</text></svg>">
+</head>
+<body>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(images/birdlogo.jpeg);
+            background-size: 150px;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .header-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: #1B5E20;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1B5E20;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 25px;
+            padding: 0 15px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            align-self: flex-start;
+        }
+
+        .widget {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .widget:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .widget h3 {
+            color: #2E7D32;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #E8F5E9;
+        }
+
+        #clock {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(to right, #E8F5E9, #C8E6C9);
+            border-radius: 8px;
+            color: #2E7D32;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 150px;
+            display: block;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .widget p {
+            margin-bottom: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        #home {
+            display: block;
+        }
+
+        h2 {
+            color: #2E7D32;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #4CAF50;
+            font-size: 2rem;
+        }
+
+        h3 {
+            color: #4CAF50;
+            margin: 20px 0 12px;
+            font-size: 1.5rem;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            background: linear-gradient(to right, #FFD966, #FFE599);
+            padding: 12px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+            font-weight: bold;
+            color: #5D4037;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Articles */
+        .articles {
+            display: grid;
+            gap: 25px;
+        }
+
+        .article-preview {
+            padding: 20px;
+            border: 1px solid #E8F5E9;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background-color: #F9F9F9;
+        }
+
+        .article-preview:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #C8E6C9;
+        }
+
+        .article-preview h3 a {
+            color: #2E7D32;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .article-preview h3 a:hover {
+            color: #1B5E20;
+            text-decoration: underline;
+        }
+
+        .date {
+            color: #757575;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+        }
+
+        .read-more:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* About Section */
+        .about-section {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #E8F5E9;
+        }
+
+        .about-section:last-child {
+            border-bottom: none;
+        }
+
+        .org-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .org-item {
+            padding: 20px;
+            background: linear-gradient(to bottom, #E8F5E9, #C8E6C9);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .org-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .org-item p {
+            margin-bottom: 8px;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #E8F5E9;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2E7D32;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #C8E6C9;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-info, .contact-form {
+            padding: 25px;
+            background-color: #F9F9F9;
+            border-radius: 8px;
+            border: 1px solid #E8F5E9;
+        }
+
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media h4 {
+            margin-bottom: 15px;
+            color: #2E7D32;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background-color: #2E7D32;
+            transform: translateY(-2px);
+        }
+
+        /* Article Full */
+        .article-full {
+            line-height: 1.8;
+        }
+
+        .article-full h3 {
+            margin-top: 25px;
+            color: #2E7D32;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 1px solid #4CAF50;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+
+        .footer-content a {
+            color: #FFD966;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 1;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .header-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .org-chart {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animasi tambahan */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-section {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Notifikasi */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1001;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="images/begronawalburung.jpeg" alt="Logo Bird Shop by Zalfa" class="logo">
+                <div class="header-text">
+                    <h1>Kicau Mania</h1>
+                    <p>Platfrom Burung Terlengkap dan Terpercaya</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigasi Menu -->
+    <nav>
+        <ul>
+            <li><a href="#" data-target="home">Home</a></li>
+            <li class="dropdown">
+                <a href="#" data-target="about">Tentang Kami</a>
+                <div class="dropdown-content">
+                    <a href="#" data-target="profil">Profil</a>
+                    <a href="#" data-target="sejarah">Sejarah</a>
+                    <a href="#" data-target="visi-misi">Visi & Misi</a>
+                    <a href="#" data-target="struktur">Struktur Organisasi</a>
+                </div>
+            </li>
+            <li><a href="#" data-target="gallery">Galeri</a></li>
+            <li><a href="#" data-target="registration">Pendaftaran</a></li>
+            <li><a href="#" data-target="contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Notifikasi -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3>Jam</h3>
+                <div id="clock"></div>
+            </div>
+            <div class="widget">
+                <h3>Video Burung Murai Batu</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dO62JABofm4?si=cPdfELQ-cRgaaZXL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="widget">
+                <h3>Profil Pemilik</h3>
+                <img src="images/burunguyee.jpeg" alt="Profil Pemilik" class="profile-img">
+                <p><strong>Zalfa</strong></p>
+                <p>Pecinta burung sejak kecil dengan pengalaman lebih dari 5 tahun dalam merawat dan menjual berbagai jenis burung.</p>
+            </div>
+            <div class="widget">
+                <h3>Statistik Pengunjung</h3>
+                <p>Pengunjung Hari Ini: <span id="visitor-today">25</span></p>
+                <p>Total Pengunjung: <span id="total-visitor">1289</span></p>
+            </div>
+        </aside>
+
+        <!-- Main Body -->
+        <main class="main-content">
+            <section id="home" class="page-section active">
+                <h2>Selamat Datang di Kicau Mania</h2>
+                <div class="marquee-container">
+                    <div class="marquee">
+                        🐦 Promosi Spesial: Dapatkan diskon 10% untuk pembelian burung murai batu dan lovebird selama bulan ini! 🐦
+                    </div>
+                </div>
+                
+                <div class="articles">
+                    <article class="article-preview">
+                        <h3><a href="#" data-target="artikel1">Cara Merawat Burung Kenari Agar Rajin Berkicau</a></h3>
+                        <p class="date">Diposting: 15 Oktober 2023</p>
+                        <p>Burung kenari merupakan salah satu jenis burung kicau yang populer di Indonesia. Untuk membuat burung kenari rajin berkicau, diperlukan perawatan yang tepat...</p>
+                        <a href="#" data-target="artikel1" class="read-more">Baca Selengkapnya</a>
+                    </article>
+                    
+                    <article class="article-preview">
+                        <h3><a href="#" data-target="artikel2">Jenis-Jenis Lovebird dan Karakteristiknya</a></h3>
+                        <p class="date">Diposting: 10 Oktober 2023</p>
+                        <p>Lovebird adalah burung yang dikenal dengan warna bulunya yang cerah dan sifatnya yang penuh kasih sayang. Ada berbagai jenis lovebird dengan karakteristik berbeda...</p>
+                        <a href="#" data-target="artikel2" class="read-more">Baca Selengkapnya</a>
+                    </article>
+                    
+                    <article class="article-preview">
+                        <h3><a href="#" data-target="artikel3">Tips Memilih Sangkar Burung yang Tepat</a></h3>
+                        <p class="date">Diposting: 5 Oktober 2023</p>
+                        <p>Pemilihan sangkar yang tepat sangat penting untuk kesehatan dan kenyamanan burung peliharaan Anda. Berikut adalah beberapa tips dalam memilih sangkar burung...</p>
+                        <a href="#" data-target="artikel3" class="read-more">Baca Selengkapnya</a>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- Halaman About -->
+            <section id="about" class="page-section">
+                <h2>Tentang Kami</h2>
+                
+                <div id="profil" class="about-section">
+                    <h3>Profil Bird Shop by Zalfa</h3>
+                    <p>Web Bird by Zalfa adalah toko burung yang telah berdiri sejak tahun 2015. Kami menyediakan berbagai jenis burung kicau, perlengkapan burung, pakan, dan aksesoris burung berkualitas.</p>
+                    <p>Kami berkomitmen untuk menyediakan burung-burung yang sehat dan berkualitas dengan pelayanan terbaik untuk para pecinta burung di seluruh Indonesia.</p>
+                </div>
+                
+                <div id="sejarah" class="about-section">
+                    <h3>Sejarah</h3>
+                    <p>Web Bird Kicau Mania didirikan oleh Zalfa Rifkyandi pada tahun 2020 dengan modal terbatas dan hanya menjual beberapa jenis burung. Seiring berjalannya waktu, toko kami berkembang pesat dan kini menjadi salah satu toko burung terpercaya di kota ini.</p>
+                    <p>Dari awal yang sederhana dengan hanya satu kios kecil, kini kami telah memiliki toko yang luas dengan berbagai jenis burung dan perlengkapannya.</p>
+                </div>
+                
+                <div id="visi-misi" class="about-section">
+                    <h3>Visi & Misi</h3>
+                    <p><strong>Visi:</strong> Menjadi toko burung terdepan yang menyediakan burung berkualitas dengan pelayanan terbaik.</p>
+                    <p><strong>Misi:</strong></p>
+                    <ul>
+                        <li>Menyediakan burung-burung sehat dan berkualitas</li>
+                        <li>Memberikan edukasi tentang perawatan burung yang benar</li>
+                        <li>Menyediakan perlengkapan dan pakan burung yang lengkap</li>
+                        <li>Memberikan pelayanan yang ramah dan profesional</li>
+                    </ul>
+                </div>
+                
+                <div id="struktur" class="about-section">
+                    <h3>Struktur Organisasi</h3>
+                    <div class="org-chart">
+                        <div class="org-item">
+                            <p><strong>Pemilik</strong></p>
+                            <p>Zalfa Rifkyandi</p>
+                        </div>
+                        <div class="org-item">
+                            <p><strong>Manager</strong></p>
+                            <p>Nuraini</p>
+                        </div>
+                        <div class="org-item">
+                            <p><strong>Staf Penjualan</strong></p>
+                            <p>Sulthan Diego</p>
+                            <p>aulia kustiawati</p>
+                        </div>
+                        <div class="org-item">
+                            <p><strong>Perawat Burung</strong></p>
+                            <p>faruq zamy zamy</p>
+                            <p>kamal</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Halaman Gallery -->
+            <section id="gallery" class="page-section">
+                <h2>Galeri</h2>
+                <div class="gallery-container">
+                    <div class="gallery-item" data-image="images/anakan kenari.jpeg">
+                        <img src="images/anakan kenari.jpeg" alt="Burung Kenari">
+                        <p>Burung anakan Kenari</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/anakan love bird.jpeg">
+                        <img src="images/anakan love bird.jpeg" alt="Burung Lovebird">
+                        <p>Burung anakan Lovebird</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/anakan murai.jpeg">
+                        <img src="images/anakan murai.jpeg" alt="Burung Murai">
+                        <p>Burung anakan murai</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungcucalhijau.jpeg">
+                        <img src="images/burungcucalhijau.jpeg" alt="Burung cucak hijau">
+                        <p>Burung cucak hijau</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungciblek.jpeg">
+                        <img src="images/burungciblek.jpeg" alt="Burung Ciblek">
+                        <p>Burung Ciblek</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burunggereja.jpeg">
+                        <img src="images/burunggereja.jpeg" alt="Burung Gereja">
+                        <p>Burung Gereja</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungpentet.jpeg">
+                        <img src="images/burungpentet.jpeg" alt="Burung Pentet">
+                        <p>Burung Pentet</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungkacer (1).jpeg">
+                        <img src="images/burungkacer (1).jpeg" alt="Burung Kacer">
+                        <p>Burung Kacer</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burunggreyparot.jpeg">
+                        <img src="images/burunggreyparot.jpeg" alt="Burung Africa Grey Parot">
+                        <p>Burung Africa Grey Parot</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/fotoumikasum.png">
+                        <img src="images/fotoumikasum.png" alt="Owner Murai Batu">
+                        <p>Owner Murai Batu</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/omprio.png">
+                        <img src="images/omprio.png" alt="Owner murai batu">
+                        <p>Owner Murai Batu</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/ownersinjay.png">
+                        <img src="images/ownersinjay.png" alt="Owner Murai Batu">
+                        <p>Owner Marai Batu</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/kaandangBNR.jpeg">
+                        <img src="images/kaandangBNR.jpeg" alt="Kandang Murai Batu">
+                        <p>Kandang Murai Batu</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/kandangsmm.jpeg">
+                        <img src="images/kandangsmm.jpeg" alt="kandang murai batu">
+                        <p>Kandang Murai Batu</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/kandangmp.jpeg">
+                        <img src="images/kandangmp.jpeg" alt="Kandang Maurai Batu">
+                        <p>Kandang Murai Batu </p>
+                    </div>
+                    <div class="gallery-item" data-image="images/fotomurai.jpeg">
+                        <img src="images/fotomurai.jpeg" alt="Burung Murai Batu Medan">
+                        <p>Burung Murai Batu Medan</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burung murai batu bahorok medan. jpeg"> <img src="images/burung murai batu bahorok medan.jpeg" alt="Burung     Murai Batu Bahorok">
+                    <p>Burung Murai Batu Bahorok </p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungmurainias.jpeg">
+                        <img src="images/burungmurainias.jpeg" alt="Burung Murai Batu Nias">
+                        <p>Burung Murai Batu Nias </p>
+                    </div>
+                     <div class="gallery-item" data-image="images/jalak item putih.jpeg">
+                        <img src="images/jalak item putih.jpeg" alt="Burung Jalak Hitam Putih">
+                        <p>Burung Jalak Hitam Putih</p>
+                    </div>
+                     <div class="gallery-item" data-image="images/Jalak Bali.jpeg">
+                        <img src="images/Jalak Bali.jpeg" alt="Burung Jalak Bali">
+                        <p>Burung Jalak Bali </p>
+                    </div>
+                     <div class="gallery-item" data-image="images/burungkrpodaangkuning.jpeg">
+                        <img src="images/burungkrpodaangkuning.jpeg" alt="Burung Kepodang Kuning">
+                        <p>Burung kepodang kuning</p>images/konin.jpeg
+                    </div>
+                    <div class="gallery-item" data-image="images/konin.jpeg">
+                        <img src="images/konin.jpeg" alt="Burung Konin">
+                        <p>Burung konin</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/burungkenari.jpeg">
+                        <img src="images/burungkenari.jpeg" alt="Burung Kenari">
+                        <p>Burung kenari</p>
+                    </div>
+                    <div class="gallery-item" data-image="images/lovebird.jpeg">
+                        <img src="images/lovebird.jpeg" alt="Burung Love Bird">
+                        <p>Burung Love Bird</p>
+                    </div>
+            </section>
+            
+            <!-- Halaman Registration -->
+            <section id="registration" class="page-section">
+                <h2>Formulir Pendaftaran</h2>
+                <p>Isi formulir di bawah ini untuk bergabung dengan komunitas Web Bird Kicau Mania dan dapatkan informasi terbaru tentang burung serta promo spesial.</p>
+                
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Alamat:</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bird-type">Jenis Burung yang Diminati:</label>
+                        <select id="bird-type" name="bird-type">
+                            <option value="kenari">Kenari</option>
+                            <option value="lovebird">Lovebird</option>
+                            <option value="parkit">Murai</option>
+                            <option value="kakatua">Kakatua</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Pengalaman Memelihara Burung:</label>
+                        <select id="experience" name="experience">
+                            <option value="pemula">Pemula</option>
+                            <option value="menengah">Menengah</option>
+                            <option value="ahli">Ahli</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Daftar Sekarang</button>
+                </form>
+            </section>
+            
+            <!-- Halaman Contact -->
+            <section id="contact" class="page-section">
+                <h2>Kontak Kami</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Informasi Kontak</h3>
+                        <p><strong>Alamat:</strong> Jl.kali jiun, pondok aren, kota Tanggerang Selatan</p>
+                        <p><strong>Telepon:</strong> 085773577950(zalfa)</p>
+                        <p><strong>Email:</strong> zalfarifkyandi@gmail.com</p>
+                        
+                        <div class="social-media">
+                            <h4>Media Sosial</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link">Facebook</a>
+                                <a href="#" class="social-link">Instagram</a>
+                                <a href="#" class="social-link">Twitter</a>
+                                <a href="#" class="social-link">YouTube</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Formulir Kontak</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">Nama:</label>
+                                <input type="text" id="contact-name" name="contact-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Email:</label>
+                                <input type="email" id="contact-email" name="contact-email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="institution">Institusi:</label>
+                                <input type="text" id="institution" name="institution">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Pesan:</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Halaman Artikel Lengkap -->
+            <section id="artikel1" class="page-section article-full">
+                <h2>Cara Merawat Burung Kenari Agar Rajin Berkicau</h2>
+                <p class="date">Diposting: 15 Oktober 2023</p>
+                <p>Burung kenari merupakan salah satu jenis burung kicau yang populer di Indonesia. Untuk membuat burung kenari rajin berkicau, diperlukan perawatan yang tepat dan konsisten. Berikut adalah beberapa tips merawat burung kenari:</p>
+                
+                <h3>1. Pemberian Pakan yang Berkualitas</h3>
+                <p>Berikan pakan yang seimbang antara biji-bijian, sayuran, dan buah-buahan. Pakan utama burung kenari adalah biji kenari, milet, dan canary seed. Tambahkan juga sayuran hijau seperti sawi, selada, atau kangkung.</p>
+                
+                <h3>2. Kebersihan Kandang</h3>
+                <p>Jaga kebersihan kandang dengan rutin membersihkannya setiap hari. Ganti air minum dan mandi setiap hari untuk mencegah pertumbuhan bakteri.</p>
+                
+                <h3>3. Pemasteran</h3>
+                <p>Lakukan pemasteran dengan memutarkan suara burung kenari gacor atau menggunakan burung kenari lain sebagai master. Pemasteran sebaiknya dilakukan pada pagi dan sore hari.</p>
+                
+                <h3>4. Penjemuran</h3>
+                <p>Jemur burung kenari setiap pagi selama 1-2 jam. Penjemuran membantu menjaga kesehatan burung dan merangsang burung untuk berkicau.</p>
+                
+                <p>Dengan perawatan yang tepat, burung kenari Anda akan rajin berkicau dan memiliki suara yang merdu.</p>
+                
+                <a href="#" data-target="home" class="back-link">← Kembali ke Beranda</a>
+            </section>
+            
+            <section id="artikel2" class="page-section article-full">
+                <h2>Jenis-Jenis Lovebird dan Karakteristiknya</h2>
+                <p class="date">Diposting: 10 Oktober 2023</p>
+                <p>Lovebird adalah burung yang dikenal dengan warna bulunya yang cerah dan sifatnya yang penuh kasih sayang. Ada berbagai jenis lovebird dengan karakteristik berbeda. Berikut adalah beberapa jenis lovebird yang populer:</p>
+                
+                <h3>1. Lovebird Fischer</h3>
+                <p>Lovebird Fischer memiliki warna dominan hijau dengan kepala oranye kemerahan. Burung ini aktif dan cerdas, cocok untuk pemula.</p>
+                
+                <h3>2. Lovebird Masked</h3>
+                <p>Lovebird Masked memiliki kepala hitam dengan tubuh hijau. Burung ini dikenal dengan suaranya yang nyaring dan sifatnya yang agak agresif.</p>
+                
+                <h3>3. Lovebird Peach-faced</h3>
+                <p>Lovebird Peach-faced memiliki wajah berwarna peach dengan tubuh hijau. Burung ini adalah jenis lovebird yang paling populer dan mudah dijinakkan.</p>
+                
+                <h3>4. Lovebird Nyasa</h3>
+                <p>Lovebird Nyasa memiliki warna hijau dengan kepala kuning. Burung ini termasuk jenis lovebird yang langka dan memiliki harga yang cukup tinggi.</p>
+                
+                <p>Setiap jenis lovebird memiliki keunikan dan karakteristik tersendiri. Pilihlah jenis lovebird yang sesuai dengan preferensi dan pengalaman Anda.</p>
+                
+                <a href="#" data-target="home" class="back-link">← Kembali ke Beranda</a>
+            </section>
+            
+            <section id="artikel3" class="page-section article-full">
+                <h2>Tips Memilih Sangkar Burung yang Tepat</h2>
+                <p class="date">Diposting: 5 Oktober 2023</p>
+                <p>Pemilihan sangkar yang tepat sangat penting untuk kesehatan dan kenyamanan burung peliharaan Anda. Berikut adalah beberapa tips dalam memilih sangkar burung:</p>
+                
+                <h3>1. Ukuran Sangkar</h3>
+                <p>Pilih sangkar dengan ukuran yang sesuai dengan jenis dan ukuran burung. Semakin besar burung, semakin besar pula sangkar yang dibutuhkan. Pastikan burung dapat bergerak dengan leluasa di dalam sangkar.</p>
+                
+                <h3>2. Bahan Sangkar</h3>
+                <p>Sangkar burung biasanya terbuat dari kayu, besi, atau stainless steel. Pilih bahan yang kuat, tahan lama, dan mudah dibersihkan. Untuk burung yang suka mengunyah, hindari sangkar kayu.</p>
+                
+                <h3>3. Jarak Antar Jeruji</h3>
+                <p>Perhatikan jarak antar jeruji sangkar. Jarak yang terlalu lebar dapat membuat burung keluar atau terjepit. Sesuaikan jarak jeruji dengan ukuran burung.</p>
+                
+                <h3>4. Aksesoris Sangkar</h3>
+                <p>Pastikan sangkar dilengkapi dengan tempat pakan, tempat minum, dan tangkaran yang aman. Tambahkan juga mainan burung untuk menghindari kebosanan.</p>
+                
+                <p>Dengan memilih sangkar yang tepat, burung peliharaan Anda akan merasa nyaman dan sehat.</p>
+                
+                <a href="#" data-target="home" class="back-link">← Kembali ke Beranda</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Web Bird by Zalfa. All Rights Reserved.</p>
+            <p>Desain by: Zalfa</p>
+            <p>Official tiktok <a href="https://www.tiktok.com/@trotolmb?is_from_webapp=1&sender_device=pc">Team Sepele</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fungsi untuk jam real-time
+            function updateClock() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            }
+            
+            // Update jam setiap detik
+            setInterval(updateClock, 1000);
+            updateClock(); // Panggil sekali untuk menginisialisasi
+            
+            // Navigasi antar halaman
+            const navLinks = document.querySelectorAll('nav a, .read-more, .article-preview h3 a, .back-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Sembunyikan semua section
+                    pageSections.forEach(section => {
+                        section.style.display = 'none';
+                        section.classList.remove('active');
+                    });
+                    
+                    // Tampilkan section yang dipilih
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                        targetSection.classList.add('active');
+                        
+                        // Scroll ke atas halaman
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+            
+            // Form pendaftaran
+            const registrationForm = document.getElementById('registration-form');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Terima kasih! Formulir pendaftaran Anda telah berhasil dikirim.');
+                    this.reset();
+                });
+            }
+            
+            // Form kontak
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Terima kasih! Pesan Anda telah berhasil dikirim.');
+                    this.reset();
+                });
+            }
+            
+            // Fungsi untuk menampilkan notifikasi
+            function showNotification(message) {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.style.display = 'block';
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 4000);
+            }
+            
+            // Lightbox untuk galeri
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const imageUrl = this.getAttribute('data-image');
+                    lightboxImg.src = imageUrl;
+                    lightbox.style.display = 'flex';
+                });
+            });
+            
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+            
+            // Statistik pengunjung (simulasi)
+            function updateVisitorStats() {
+                // Ini hanya simulasi, dalam aplikasi nyata data akan diambil dari server
+                const today = new Date().toDateString();
+                let visitorData = JSON.parse(localStorage.getItem('visitorData')) || {};
+                
+                if (visitorData.date !== today) {
+                    visitorData.date = today;
+                    visitorData.today = 0;
+                }
+                
+                visitorData.today = (visitorData.today || 0) + 1;
+                visitorData.total = (visitorData.total || 0) + 1;
+                
+                localStorage.setItem('visitorData', JSON.stringify(visitorData));
+                
+                document.getElementById('visitor-today').textContent = visitorData.today;
+                document.getElementById('total-visitor').textContent = visitorData.total;
+            }
+            
+            updateVisitorStats();
+            
+            // Animasi tambahan saat halaman dimuat
+            setTimeout(() => {
+                document.querySelector('.header-content').style.opacity = '1';
+                document.querySelector('.header-content').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
